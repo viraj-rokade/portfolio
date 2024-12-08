@@ -51,3 +51,7 @@
     text-decoration: none;
     margin: 0 15px;
 }
+
+.social-icon:hover {
+    color: #818181;
+}
