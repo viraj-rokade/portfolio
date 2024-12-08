@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import AppLoader from "./Components/AppLoader/AppLoader";
+import AppBase from "./Components/AppBase/AppBase";
 
-function App() {
+const App = () => {
+  const [showAppLoader, setShowAppLoader] = useState<boolean>(true);
+
+  setTimeout(() => {
+    setShowAppLoader(false);
+  }, 4000);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div className="app">{showAppLoader ? <AppLoader /> : <AppBase />}</div>
   );
-}
+};
 
 export default App;

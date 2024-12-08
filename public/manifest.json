@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Portfolio",
+  "name": "Viraj Rokade",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,14 +8,19 @@
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "circle-cropped1.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "circle-cropped2.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "192x192"
+    },
+    {
+      "src": "circle-cropped3.png",
+      "type": "image/png",
+      "sizes": "192x192"
     }
   ],
   "start_url": ".",
