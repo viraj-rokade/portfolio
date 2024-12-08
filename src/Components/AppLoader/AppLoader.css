@@ -8,6 +8,7 @@
 
 .loader-text {
     font-size: 1.5em;
+    text-shadow: 2px 2px 4px #000000;
 }
 
 .loader-display {
