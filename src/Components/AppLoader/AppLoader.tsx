@@ -1,7 +1,7 @@
 import "./AppLoader.css";
 import { SpiralSpinner } from "react-spinners-kit";
 
-const AppLoader = () => {
+const AppLoader: React.FC = () => {
   return (
     <div className="app-loader-container">
       <div>

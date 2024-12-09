@@ -4,6 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const originalError = console.error;
+console.error = (...args) => {
+  if (args[0].includes("Support for defaultProps will be removed")) {
+    return; // Suppress this specific warning
+  }
+  originalError(...args);
+};
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

@@ -1,8 +1,11 @@
 import { useState } from 'react';
 
 import { Tabs } from '../../../Config/common.config';
+import backgroundImg from "../../../Assets/Images/mainbg.png";
+
 import LeftSideNavBar from './LeftSideNavBar/LeftSideNavBar';
 import RightSideNavBar from './RightSideNavBar/RightSideNavBar';
+
 import Home from "./Home/Home";
 import Experience from './Experience/Experience';
 import Education from './Education/Educations';
@@ -47,7 +50,14 @@ const Content = () => {
         </div>
 
         <div className="content-container">
-          {selectedTab && getSelectedComponent()}
+          <div
+            className="background-cover-drop"
+            style={{ backgroundImage: `url(${backgroundImg})` }}
+          >
+            <div className="background-cover-drop-overlay">
+              {selectedTab && getSelectedComponent()}
+            </div>
+          </div>
           <RightSideNavBar
             displayTab={(tab: Tabs) => setSelectedTab(tab)}
             selectedTab={selectedTab}

@@ -7,6 +7,18 @@ import "./RightSideNavBar.css";
 
 const RightSideNavBar = (props: { displayTab: (tab: Tabs) => void, selectedTab: Tabs }) => {
   const [barExpanded, setBarExpanded] = useState(false);
+  const [shouldRenderSelectedTab, setShouldRenderSelectedTab] = useState(true);
+  const [shouldRenderAllTabs, setShouldRenderAllTabs] = useState(false);
+
+  const handleTransitionEnd = () => {
+    if (!barExpanded) {
+      setShouldRenderSelectedTab(true);
+      setShouldRenderAllTabs(false); 
+    } else {
+      setShouldRenderSelectedTab(false);
+      setShouldRenderAllTabs(true); 
+    }
+  };
 
   return (
     <div
@@ -34,54 +46,31 @@ const RightSideNavBar = (props: { displayTab: (tab: Tabs) => void, selectedTab: 
       </div>
 
       <div className="tabs-container">
-        <div
-          className={`tab-link ${barExpanded ? "visible" : "hidden"}`}
-          onClick={() => {
-            setBarExpanded((prevState) => !prevState);
-            props.displayTab(Tabs.home);
-          }}
-        >
-          <span className="link-span">{Tabs.home}</span>
-        </div>
-        <div
-          className={`tab-link ${barExpanded ? "visible" : "hidden"}`}
-          onClick={() => {
-            setBarExpanded((prevState) => !prevState);
-            props.displayTab(Tabs.experience);
-          }}
-        >
-          <span className="link-span">{Tabs.experience}</span>
-        </div>
-        <div
-          className={`tab-link ${barExpanded ? "visible" : "hidden"}`}
-          onClick={() => {
-            setBarExpanded((prevState) => !prevState);
-            props.displayTab(Tabs.education);
-          }}
-        >
-          <span className="link-span">{Tabs.education}</span>
-        </div>
-        <div
-          className={`tab-link ${barExpanded ? "visible" : "hidden"}`}
-          onClick={() => {
-            setBarExpanded((prevState) => !prevState);
-            props.displayTab(Tabs.projects);
-          }}
-        >
-          <span className="link-span">{Tabs.projects}</span>
-        </div>
-        <div
-          className={`tab-link ${barExpanded ? "visible" : "hidden"}`}
-          onClick={() => {
-            setBarExpanded((prevState) => !prevState);
-            props.displayTab(Tabs.contact);
-          }}
-        >
-          <span className="link-span">{Tabs.contact}</span>
-        </div>
-        <div className={`selected-tab ${barExpanded ? "hidden" : "visible"}`}>
-          <span className="selected-tab-span">{props.selectedTab}</span>
-        </div>
+        {shouldRenderAllTabs && Object.keys(Tabs).map((key, index) => {
+          return (
+            <div
+              key={index}
+              className={`tab-link ${barExpanded ? "visible" : "hidden"}`}
+              onTransitionEnd={handleTransitionEnd}
+              onClick={() => {
+                setBarExpanded((prevState) => !prevState);
+                props.displayTab(Tabs[key as keyof typeof Tabs]);
+              }}
+            >
+              <span className="link-span">
+                {Tabs[key as keyof typeof Tabs]}
+              </span>
+            </div>
+          );
+        })}
+        {shouldRenderSelectedTab && (
+          <div
+            className={`selected-tab ${barExpanded ? "hidden" : "visible"}`}
+            onTransitionEnd={handleTransitionEnd}
+          >
+            <span className="selected-tab-span">{props.selectedTab}</span>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ const Home = () => {
 
   return (
     <div>
-      <TypeWriter texts={typeWriterData} />
+      {/* <TypeWriter texts={typeWriterData} /> */}
     </div>
   );
 };
