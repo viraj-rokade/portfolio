@@ -52,12 +52,14 @@ const RightSideNavBar = (props: { displayTab: (tab: Tabs) => void, selectedTab: 
               key={index}
               className={`tab-link ${barExpanded ? "visible" : "hidden"}`}
               onTransitionEnd={handleTransitionEnd}
-              onClick={() => {
-                setBarExpanded((prevState) => !prevState);
-                props.displayTab(Tabs[key as keyof typeof Tabs]);
-              }}
             >
-              <span className="link-span">
+              <span
+                className="link-span"
+                onClick={() => {
+                  setBarExpanded((prevState) => !prevState);
+                  props.displayTab(Tabs[key as keyof typeof Tabs]);
+                }}
+              >
                 {Tabs[key as keyof typeof Tabs]}
               </span>
             </div>
